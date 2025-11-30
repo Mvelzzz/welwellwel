@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Ulangan Bahasa Indonesia</title>
+
+<style>
+body {
+  background: linear-gradient(#ffd9ec, #ffeefb);
+  font-family: 'Poppins', sans-serif;
+font-weight: 700;
+  padding: 20px;
+  color: #444;
+}
+
+/* CARD */
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 900px;
+  margin: auto;
+  box-shadow: 0 0 20px rgba(255, 150, 200, 0.5);
+}
+
+/* BUTTON */
+button {
+  background: #ff7bbf;
+  border: none;
+  color: white;
+  padding: 12px 18px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 18px;
+  transition: .3s;
+}
+button:hover {
+  background: #ff52a0;
+  transform: scale(1.05);
+}
+
+/* EMOJI FALL */
+.fall {
+  position: fixed;
+  top: -50px;
+  font-size: 28px;
+  animation-name: fallAnimation;
+  animation-timing-function: linear;
+}
+
+@keyframes fallAnimation {
+  0% { transform: translateY(0) rotate(0deg); opacity:1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity:0; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<h2 style="text-align:center; color:#ff4da6">mangattzz yaaa wiiee</h2>
+
+<form id="quizForm">
+
+<!-- ================= SOAL DIMULAI ================ -->
+
+<script>
+let questions = [
+  // Format: ["soal", "a","b","c","d","jawaban"]
+  ["Teks deskripsi digunakan untuk?", "Menggambarkan sesuatu", "Menceritakan masa lalu", "Mengajak pembaca", "Memberikan perintah", "a"],
+  ["Ide pokok adalah?", "Gambaran umum teks", "Inti dari paragraf", "Kalimat pertama saja", "Semua kalimat", "b"],
+  ["Jika paragraf dimulai dengan ide pokok di depan maka disebut?", "Induktif", "Deduktif", "Campuran", "Acak", "b"],
+  ["Kalimat utama adalah?", "Kalimat penjelas", "Kalimat yang berisi inti paragraph", "Kalimat paling panjang", "Kalimat terakhir", "b"],
+  ["Berikut ini unsur kebahasaan deskripsi kecuali?", "Kata konkret", "Majasisasi", "Sinonim", "Kalimat perincian", "b"],
+  ["Kata berimbuhan disebut?", "Kata tugas", "Kata baku", "Kata berafiks", "Kalimat efektif", "c"],
+  ["Pronomina adalah?", "Kata ganti", "Sinonim", "Majas", "Kata hubung", "a"],
+  ["Konjungsi adalah?", "Kata sifat", "Kata benda", "Kata hubung", "Kata kerja", "c"],
+  ["'Tetapi','karena','lalu' termasuk?", "Kata kerja", "Konjungsi", "Kata ganti", "Majasa", "b"],
+  ["Pantun yang bertema cinta disebut?", "Pantun jenaka", "Pantun anak", "Pantun nasihat", "Pantun kasih sayang", "d"],
+  ["Sastra lama bersifat?", "Modern", "Menggunakan aturan bebas", "Anonim & turun temurun", "Populer di internet", "c"],
+  ["Puisi rakyat dibacakan dengan?", "Nada bebas", "Irama terikat", "Tidak ada syarat", "Sambil menyanyi", "b"],
+  ["Mantra biasanya digunakan untuk?", "Doa magis", "Pantun sekolah", "Cerpen", "Drama", "a"],
+  ["Gurindam terdiri dari?", "4 baris", "2 baris", "8 baris", "Bebas", "b"],
+  ["Cerita fantasi bersifat?", "Realistis", "Mustahil namun imajinatif", "Berdasarkan fakta", "Berita resmi", "b"],
+  ["Ciri utama cerita fantasi?", "Tokoh nyata", "Bahasa ilmiah", "Ada unsur imajinasi", "Tidak ada tokoh", "c"],
+  ["Teks prosedur menjelaskan?", "Cara melakukan sesuatu", "Cerita masa lalu", "Perasaan seseorang", "Tempat wisata", "a"],
+  ["Struktur teks narasi adalah?", "Orientasi-komplikasi-resolusi", "Judul-isi-penutup", "Bebas", "Pernyataan-argumen", "a"],
+  ["Teks prosedur digunakan untuk?", "Membujuk", "Memberikan langkah langkah", "Menghibur", "Mendeskripsikan hewan", "b"],
+  ["Sinonim dari 'cantik' adalah?", "Buruk", "Indah", "Menakutkan", "Marah", "b"],
+];
+
+// Auto generate form
+document.write("<ol>");
+questions.forEach((q, i) => {
+  document.write(`<li>${q[0]}<br>
+    <input type='radio' name='q${i}' value='a'> a. ${q[1]}<br>
+    <input type='radio' name='q${i}' value='b'> b. ${q[2]}<br>
+    <input type='radio' name='q${i}' value='c'> c. ${q[3]}<br>
+    <input type='radio' name='q${i}' value='d'> d. ${q[4]}<br><br>
+  `);
+});
+document.write("</ol>");
+</script>
+
+<br><button type="button" onclick="checkScore()">Selesai 💘</button>
+
+<h3 id="result" style="text-align:center; color:#ff0080;"></h3>
+
+</form>
+</div>
+
+<!-- 🌸💖 ANIMASI BUNGA -->
+<div class="falling"></div>
+
+<script>
+const emojis = ["🌸","💖","💗","❤️","🌺","💞"]; 
+
+function createFalling() {
+    const element = document.createElement("div");
+    element.classList.add("fall");
+    element.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    element.style.left = Math.random() * 100 + "vw";
+    element.style.animationDuration = (Math.random() * 5 + 3) + "s";
+    document.body.appendChild(element);
+    setTimeout(() => { element.remove(); }, 8000);
+}
+setInterval(createFalling, 400);
+
+
+function checkScore(){
+  let score = 0;
+  questions.forEach((q, i)=>{
+    let answer = document.querySelector(`input[name="q${i}"]:checked`);
+    if(answer && answer.value === q[5]) score++;
+  });
+  document.getElementById("result").innerHTML = `Nilai Kamu: <b>${score}/${questions.length}</b> 🎉💕`;
+}
+</script>
+
+</body>
+</html>
